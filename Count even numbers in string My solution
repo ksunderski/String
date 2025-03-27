@@ -1,0 +1,21 @@
+function countEven(str){
+  let count = 0;
+  let acc = '';
+  for(let i = 0; i < str.length; i++){
+    if(!isNaN(str[i]) && str[i] !== ' '){   // check if symbol is a number
+      acc += str[i];                        // add it to accumulator if it's digit
+    } else if (acc !== ''){                 // this else if is a mandatory. Else itself doesn't work
+        if(+acc % 2 === 0 ){                // check if the number is even
+          count ++;                         // count it
+          acc = '';                         // zero the accumulator
+        }
+    }
+    if(i === str.length -1 && acc !== ''){  //check if the last symbol is a number
+      if(+acc % 2 === 0 ){                  // check if it's even
+          count ++;                         // count it
+          acc = '';                         // not neccesary to update acc as it finished to count
+        }
+    }
+  }
+  return count;
+}
