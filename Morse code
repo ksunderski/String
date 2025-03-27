@@ -1,0 +1,50 @@
+//codeMorse(str) converts all letters in the given string to their corresponding Morse code separated by space, 
+//ignores spaces in str, and keeps all numbers unchanged. 🚀
+
+function codeMorse(str){
+  const morse = {
+    A: '.-',
+    B: '-...',
+    C: '-.-.',
+    D: '-..',
+    E: '.',
+    F: '..-.',
+    G: '--.',
+    H: '....',
+    I: '..',
+    J: '.---',
+    K: '-.-',
+    L: '.-..',
+    M: '--',
+    N: '-.',
+    O: '---',
+    P: '.--.',
+    Q: '--.-',
+    R: '.-.',
+    S: '...',
+    T: '-',
+    U: '..-',
+    V: '...-',
+    W: '.--',
+    X: '-..-',
+    Y: '-.--',
+    Z: '--..',
+  };
+  let incrypted = '';
+  for (let char of str){
+    if(char === ' '){continue}                      //ignores spaces
+    if(char.toUpperCase() in morse){                //if it is a letter
+    incrypted += morse[char.toUpperCase()] + ' ';   //add corresponding morse code
+    } else {                                        //if it's a number or special character, add as it is
+      incrypted = incrypted + char + ' ';
+    }
+    
+  }
+  return incrypted.trim();                          //trim trailing spaces (as we add spaces after each letter)
+}  
+
+
+//codeMorse("MarcO"); // "-- .- .-. -.-. ---"
+//codeMorse(" "); // ""
+//codeMorse("0o0qQ"); // "0 --- 0 --.- --.-"
+//codeMorse(" 94 6"); // "9 4 6"
