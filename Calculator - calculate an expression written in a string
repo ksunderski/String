@@ -1,0 +1,40 @@
+// calculateExpression('120*30') => 3600
+
+function calculator(op, num1, num2) {    // this function calculate num1 and num2 using operator. They are all strings that were extracted from str
+  switch (op){
+    case '+':
+      return +num1 + +num2;              // for adding numbers we need to convert them to numbers
+    case '-':
+      return num1 - num2;               // other operators '-/*' convert string to numbers automatically
+    case '*':
+      return num1 * num2;
+    case '/':
+      return num1 / num2;  
+    default: return 'Invalid input'        
+  }
+}
+function calculateExpression(str) {          // calling this function should return the result
+  let num1 = '';
+  let num2 = '';
+  let op, opIndex;
+  
+  for(let i = 0; i < str.length; i++){       // looping the str to extract num1 and operator
+    if(isOperator(str[i])) {                 // if operator is found, complete collecting and break the loop     
+    op = str[i];
+    opIndex = i;
+    break;
+    } else num1 += str[i];                 // fill out num1 until it meets the operator. 
+  }
+
+  for(let i = opIndex+1; i < str.length; i++){   //find out the num2
+    num2 += str[i];
+}  
+  return calculator(op, num1, num2);      // call  calculator() with passing arguments
+
+}
+
+
+function isOperator(char){              // this function return true or false if string operator is found in the string 
+  const operators = '+-*/'
+  return operators.includes(char);
+}
