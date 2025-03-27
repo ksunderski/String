@@ -1,0 +1,24 @@
+function countEven(str) {
+  let count = 0;
+  let acc = '';
+
+  function checkAndCount(numStr) {
+    if (+numStr % 2 === 0) count++;
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    if (!isNaN(char) && char !== ' ') {
+      acc += char;
+    }
+
+    // Either it's a non-digit OR the last character
+    if ((isNaN(char) || char === ' ' || i === str.length - 1) && acc !== '') {
+      checkAndCount(acc);
+      acc = '';
+    }
+  }
+
+  return count;
+}
