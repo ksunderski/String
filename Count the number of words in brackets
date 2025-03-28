@@ -4,13 +4,14 @@ function insideBrackets(str){
   let acc = '';
   let count = 0;
    for(let i = firstBracket +1; i < secondBracket; i++){
-     if(str[i] === ' '){
-       count++;
-       acc = '';
-     } else {
+     if(str[i] === ' '){                                                   //words wrap with spaces, so once it found the space the word is in acc
+       count++;                                                            // so we can add to count        
+       acc = '';                                                           // clear the acc
+     } else {                                                              // if it's not a space we can continue fill in the acc
          acc+= str[i];
      }
-     if(acc !== '' && (i === secondBracket-1 || str[i] === ' ') count ++
-   }
+     if(acc !== '' && (i === secondBracket-1 || str[i] === ' ')) 
+        count ++;  // this case handles the last word which left in acc. 
+   }                                                                      // It can be the last word in the str or it might be the double space between words
    return count;
 }
