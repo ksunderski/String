@@ -1,0 +1,22 @@
+function countWords(str){
+  let count = 0;
+  let acc = '';
+  str = str.trim();
+  
+  for(let i = 0; i < str.length; i++){         
+    if(str[i] === ' '){                      //if it runs into space it means the word is end 
+      if(acc !== '') {                       // check if acc is empty to make sure it's not an additional space between words like 'Hello    world'
+        count ++;                            // count the word and clear the acc
+        acc = '';
+       } 
+    } else { 
+        acc += str[i];                      //if it's not a space, fill the acc
+      }
+      
+     if(acc!== '' && i === str.length -1 ){ //last word handling
+        count ++;
+        acc = '';
+      }  
+   }   
+  return count;
+}
