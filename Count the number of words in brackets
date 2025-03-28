@@ -1,0 +1,16 @@
+function insideBrackets(str){
+  let firstBracket = str.indexOf('(');
+  let secondBracket = str.indexOf(')');
+  let acc = '';
+  let count = 0;
+   for(let i = firstBracket +1; i < secondBracket; i++){
+     if(str[i] === ' '){
+       count++;
+       acc = '';
+     } else {
+         acc+= str[i];
+     }
+     if(acc !== '' && (i === secondBracket-1 || str[i] === ' ') count ++
+   }
+   return count;
+}
