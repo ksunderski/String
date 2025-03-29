@@ -1,0 +1,26 @@
+function countWordsNotNumbers(str){
+  let count = 0;
+  let acc = '';
+  for(let i = 0; i < str.length; i++){       
+    if(str[i] === ' ') {                      // we are not considering double spacing in the string, so if it's a space, we assume the acc has value
+        if(isNaN(+acc)){                      // determine if the value a number or a word
+          count++;                            // update count if it's not a digit
+        }
+      acc = '';
+    } else {     
+        acc +=str[i];                        // add to acc if it's the middle of the word
+      }
+     
+    if(acc !== '' && i === str.length -1){  //check the last value
+      if(isNaN(+acc)){                      //if it's not a number, and acc has something inside, update the count
+          count++;
+      }
+    }
+  }   
+  return count;
+}
+
+console.log(countWordsNotNumbers('My favorite number is 7')); //4
+console.log(countWordsNotNumbers('5 plus 5'));                //1
+console.log(countWordsNotNumbers('My favorite number is 7')); //4
+console.log();
