@@ -1,0 +1,14 @@
+function findBugs(str){
+  let count = 0;
+  let index = 0;
+  
+  for(let i = 0; i < str.length; i++){
+    if(str.includes('BUG', i)){
+      count++;
+      i = str.indexOf('BUG', i) + 2;
+    }
+  }
+  return count;
+};
+
+console.log(findBugs('BUGWhat isBUG your favorite food?BUG')); // 3
