@@ -1,0 +1,20 @@
+function moveDuplicates(str){
+  str = str.toLowerCase();
+  let singles = str[0];
+  let leftover = '';
+
+  if(str.length === 0) return 'string is empty';
+
+  for(let i = 1; i < str.length; i ++){
+    if(!singles.includes(str[i])) {
+      singles += str[i]
+    } else {
+        leftover+= str[i]
+    }
+  }
+  return [singles, leftover];
+}
+
+//moveDuplicates('AbCAaBbCc') should return ['abc', 'aabbcc']
+//moveDuplicates('!@#$%^&*()_+!@#$%^&*()_+') should return ['!@#$%^&*()_+', '!@#$%^&*()_+']
+//moveDuplicates('') should return 'string is empty'
