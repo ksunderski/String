@@ -1,0 +1,27 @@
+function returnDuplicates(str){
+  let words = {};                               //create an object to collect words to check duplicates
+  let acc = '';
+  let result = '';
+  
+  for(let i = 0; i < str.length; i++){        
+  if(str[i] !== ' ') acc += str[i];            
+  
+  if(str[i] === ' ' || i === str.length-1){      // if it's a space or the last word
+    if(acc){
+      if(!words[acc]){                           // if the word not in the object, add it and assign value to 1
+        words[acc] = 1;
+      } else if(words[acc] === 1) {              // if the word is in obj and equals 1, we found a duplicate, so we can fill result str
+          words[acc]++;
+          result += (result ? ' ' : '') + acc;   // add space if the result has at least 1 word and don't add it's a first word
+      } else words[acc]++;                       // update the word counter. We don't really need it for this task so it can be skipped
+    }
+    acc = '';
+   }
+  
+}
+  return result;
+}
+
+// returnDuplicates("hello world hello code") returns "hello"
+// returnDuplicates("one two three one two three four") returns "one two three"
+// returnDuplicates("this is a test this is a test") returns "this is a test"
