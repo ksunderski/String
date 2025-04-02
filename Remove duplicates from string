@@ -1,0 +1,19 @@
+function checkDuplicates(str){
+  let res = '';
+  let acc = '';
+  const obj = {};                               //we can add words to this object if check the following words. If it's in the obj, we skip adding it to the result string
+  
+  for(let i = 0; i < str.length; i++){
+    if(str[i] !== ' ') acc += str[i];
+    if(str[i] === ' ' || i === str.length -1) {
+      if(acc && !obj[acc]){                      // build a result string and update the object
+       obj[acc] = 1;                             // if the word not in the object, it adds to object. If it's in the object, nothing happens
+       res += (res ? ' ' : '') + acc;
+      }
+      acc = '';
+    }
+  }
+  return res;
+}
+
+//checkDuplicates("1 2 1 2 hello hello 1 1 1") should returns "1 2 hello"
