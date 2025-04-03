@@ -1,0 +1,14 @@
+function wordsCapitalize(str){
+  let capitalizeNext = true;
+  let res = '';
+  for ( let i = 0; i < str.length; i ++){
+   if(capitalizeNext && str[i] !== ' ') {
+     res += str[i].toUpperCase();
+     capitalizeNext = false;
+   } else res += str[i]
+   if(str[i] === ' ')   capitalizeNext = true;
+  }
+  return res;
+}
+
+//wordsCapitalize("hi hello welcome goodbye") should return "Hi Hello Welcome Goodbye"
