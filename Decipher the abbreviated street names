@@ -1,0 +1,37 @@
+function decodeAddress(str) {
+  const decodeTable = {
+    'St.': 'Street',
+    'Rd.': 'Road',
+    'Ln.': 'Lane',
+    'Dr.': 'Drive',
+    'Cir.': 'Circle',
+    'Ave.': 'Avenue',
+    'Pl.': 'Place',
+    'Sq.': 'Square',
+    'Pkwy.': 'Parkway',
+    'Ct.': 'Court',
+    'Hwy.': 'Highway',
+    'Plz.': 'Plaza',
+    'Blvd.': 'Boulevard',
+    'Bch.': 'Beach',
+    'Aly.': 'Alley'
+  }
+  
+  let acc = '';
+  let res = '';
+  for(let i = 0; i < str.length; i++){
+    if(str[i] !== ' ') acc += str[i];
+ 
+    if(str[i] === ' ' || i === str.length-1){
+      if(acc){
+        if(!decodeTable[acc]){
+          res+= (res? ' ' : '') + acc;
+        } else res += (res? ' ' : '') + decodeTable[acc];
+      acc = '';  
+      }
+    }
+   }  
+    return res;
+}
+
+//decodeAddress("123 Main St.") should return "123 Main Street"
