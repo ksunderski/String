@@ -1,0 +1,29 @@
+function reverseStrExceptLast(str){
+  let res = '';
+  let acc = '';
+
+  for(let i = 0; i < str.length; i ++){
+    if(str[i] === ' '){
+      res += reverse(acc);
+      acc = '';
+      res += ' ';
+    } else if(i === str.length -2) {
+        acc += str[i];
+        res += reverse(acc);
+        acc = '';
+    } else acc += str[i];  
+  }  
+  res += acc;
+  return res;
+}
+
+function reverse(str){
+  let res = '';
+  for(let i = 0; i < str.length; i ++){
+    res = str[i] + res;
+  }
+  return res;
+} 
+
+
+// reverseStrExceptLast('avaJ tpircS!') returns 'Java Script!'
