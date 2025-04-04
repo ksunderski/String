@@ -1,0 +1,12 @@
+function updateString(str){
+  let firstWord = str.substring(0, str.indexOf(' '));                      // first word from 0 to the first space
+  
+  let lastWord = str.substring(str.lastIndexOf(' ') + 1);                  // last word is from the last space to the end of the string 
+  
+  let rest = str.substring(firstWord.length, str.lastIndexOf(' ') + 1);    // rest of the string is between first word and last word
+  
+  return {firstWord: firstWord,
+         lastWord: lastWord,
+         updatedString: lastWord + rest + firstWord
+            }
+}
