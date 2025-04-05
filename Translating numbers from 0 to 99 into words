@@ -1,0 +1,55 @@
+function numToWord(arr){
+
+  if(!arr.length) return 'Array is empty';
+  
+  const objFrom0to9 = {0: 'zero', 
+                       1: 'one', 
+                       2: 'two', 
+                       3: 'three', 
+                       4: 'four', 
+                       5: 'five', 
+                       6: 'six', 
+                       7: 'seven', 
+                       8: 'eight', 
+                       9: 'nine'}
+  const objFrom11to19 = {11: 'eleven', 
+                         12: 'twelve', 
+                         13: 'thirteen', 
+                         14: 'fourteen', 
+                         15: 'fifteen', 
+                         16: 'sixteen', 
+                         17: 'seventeen', 
+                         18: 'eighteen', 
+                         19: 'nineteen'}
+  const objFrom10to90 = {1: 'ten', 
+                         2: 'twenty', 
+                         3: 'thirty', 
+                         4: 'forty', 
+                         5: 'fifty', 
+                         6: 'sixty', 
+                         7: 'seventy', 
+                         8: 'eighty', 
+                         9: 'ninety'}
+
+  
+  let newArr = [];
+  
+  for(let i = 0; i < arr.length; i++){
+    const str = arr[i].toString();                       // convert each element to string for easy navigation
+    let word = '';
+    if(str.length === 1) word = objFrom0to9[str];        // if it's a single digit number
+    else {                                               // 2 digits number
+      if(str[1] === '0') word = objFrom10to90[str[0]];   // if it ends with '0', it's From 10 to 90 and ready 
+      else if(str[0] === '1') word = objFrom11to19[str]; // if it start with '1', then it's a teen family and it's ready
+      else {                                             // if it's a compound number, we need to clue furst and second part  
+        let part1 = objFrom10to90[str[0]];
+        let part2 = objFrom0to9[str[1]];
+        word = part1 + '-' + part2;
+      }
+    }
+    newArr.push(word);                                  // push to the new array once it's ready;
+  }    
+  return newArr;
+}
+
+// numToWord([0, 2, 6, 9, 11, 12, 16, 19, 21, 46, 78, 99]) should return ['zero', 'two', 'six', 'nine', 'eleven', 'twelve', 'sixteen', 'nineteen', 'twenty-one', 'forty-six', 'seventy-eight', 'ninety-nine']
